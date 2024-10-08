@@ -1,0 +1,123 @@
+{% extends 'admin/base_site.html' %}
+
+{% block content %}
+<style>
+    {% include 'admin/css/style.css' %}
+</style>
+<section class="stats">
+    <div class="time">
+        <h1> THỐNG KÊ HỆ THỐNG CHI TIẾT  </h1>
+        <form method="get" class="dateForm">
+            <span class="dateFormItem">
+                <label for="start_date">Start Date:</label>
+                <input type="date" id="start_date" name="start_date" value="{{ start_date }}">
+            </span>
+            <span class="dateFormItem">
+                <label for="end_date">End Date:</label>
+                <input type="date" id="end_date" name="end_date" value="{{ end_date }}">
+            </span>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <section class="charts">
+        <div class="chart">
+            <canvas id="myChart"></canvas>
+        </div>
+        <div class="chart">
+            <canvas id="myChart1"></canvas>
+        </div>
+<!--        <div class="chart">-->
+<!--            <canvas id="myChart2"></canvas>-->
+<!--        </div>-->
+    </section>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    let labels = [];
+    let data = [];
+
+    {% for c in ticket_sales_per_route %}
+        labels.push('{{ c.seat_bustrip__trip__route__route_code }}');
+        data.push({{ c.total_sales }});
+    {% endfor %}
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Số vé đã thanh toán',
+            data: data,
+            borderWidth: 1,
+            backgroundColor: '#6610f2',
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            title: {
+                display: true,
+                text: 'TỔNG VÉ MỖI TUYẾN',
+                font: {
+                    size: 20
+                }
+              }
+            },
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+    });
+</script>
+<script>
+    let labels1 = [];
+    let data1 = [];
+
+    {% for c in review_by_rating %}
+        labels1.push('{{ c.rating }} sao');
+        data1.push({{ c.total_review }});
+    {% endfor %}
+
+    var ctx = document.getElementById('myChart1').getContext('2d');
+
+    var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: labels1,
+          datasets: [{
+            label: 'Số lượng đánh giá',
+            data: data1,
+            borderWidth: 1,
+            backgroundColor: [
+                'rgb(21, 75, 182)',
+                'rgb(244, 110, 103)',
+            ]
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          },
+          plugins: {
+            title: {
+                display: true,
+                text: 'SỐ LƯỢNG ĐÁNH GIÁ TRÊN HỆ THỐNG',
+                font: {
+                    size: 20
+                }
+              }
+            },
+        }
+    });
+</script>
+{% endblock %}

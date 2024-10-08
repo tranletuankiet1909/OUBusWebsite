@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xác nhận thanh toán</title>
+</head>
+<body>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">{{ title }}: {{ result }}</div>
+                <div class="panel-body">
+                    <p>ticket_id:{{ ticket_id }}</p>
+                    <p>amount:{{ amount }}</p>
+                    <p>order_desc:{{ order_desc }}</p>
+                    <p>vnp_TransactionNo:{{ vnp_TransactionNo }}</p>
+                    {% if vnp_ResponseCode == '00' %}
+                        <p>vnp_ResponseCode: {{ vnp_ResponseCode }} - Thành công</p>
+                    {% else %}
+                        <p>vnp_ResponseCode: {{ vnp_ResponseCode }} - Lỗi</p>
+                    {% endif %}
+                    {% if msg %}
+                        <p class="alert-warning"> {{ msg }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+</body>
+</html>
