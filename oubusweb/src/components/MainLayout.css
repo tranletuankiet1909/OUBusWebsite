@@ -1,0 +1,76 @@
+/* .main-layout {
+    display: flex;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    margin-left: 250px; 
+    transition: margin-left 0.5s;
+}
+
+.sidebar.collapsed + .main-content {
+    margin-left: 80px;  
+} */
+
+
+
+/* .main-layout {
+    display: flex; 
+    height: 100vh;
+    width: 100%;
+    overflow: hidden; 
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1; 
+    margin-left: 250px; 
+    padding-top: 60px; 
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px; 
+    overflow-y: auto;
+}
+.sidebar.collapsed + .main-content {
+    margin-left: 80px;  
+} */
+
+.main-layout {
+    display: flex; /* Sử dụng flexbox để căn chỉnh các phần tử con */
+    height: 100vh; /* Đặt chiều cao của main-layout bằng 100% viewport height */
+}
+
+.layout-body {
+    display: flex; /* Cũng sử dụng flexbox cho layout */
+    flex: 1; /* Chiếm toàn bộ không gian còn lại */
+}
+
+.sidebar {
+    width: 250px; /* Chiều rộng sidebar khi không collapse */
+    transition: width 0.3s; /* Hiệu ứng chuyển động khi thay đổi chiều rộng */
+}
+
+.sidebar.collapsed {
+    width: 80px; /* Chiều rộng sidebar khi collapse */
+}
+
+.content-container {
+    flex: 1; /* Để content chiếm toàn bộ không gian còn lại */
+    transition: margin-left 0.3s; /* Hiệu ứng chuyển động cho margin-left */
+    margin-left: 250px; /* Margin cho content khi sidebar không collapse */
+}
+
+.content-container.collapsed {
+    margin-left: 80px; /* Margin cho content khi sidebar collapse */
+}
+
+
+
+
+
+
+

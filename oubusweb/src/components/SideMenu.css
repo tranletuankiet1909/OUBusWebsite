@@ -1,0 +1,80 @@
+.sidebar {
+    background-color: #0a0a45;
+    width: 250px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    height: 100vh;  
+    position: fixed;
+}
+
+.sidebar.collapsed {
+    width: 80px; /* Thu gọn menu */
+}
+
+.sidebar .logo-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: lightgray;
+    border-bottom-width: 2px;
+}
+
+.sidebar .nav-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    flex-grow: 1;
+}
+
+.sidebar .nav-list li {
+    padding: 10px 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.sidebar .nav-list li a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar .nav-list li a span {
+    margin-left: 10px;
+    transition: opacity 0.3s ease;
+    opacity: 1;
+}
+
+.sidebar.collapsed .nav-list li a span {
+    opacity: 0; /* Ẩn text khi menu collapse */
+    pointer-events: none;
+}
+
+.sidebar .nav-list li:hover a span {
+    opacity: 1; /* Hiện lại text khi hover vào */
+    pointer-events: all;
+}
+
+.sidebar .nav-list li:hover {
+    background-color: #1a1a70;
+    cursor: pointer;
+}
+
+.menu-toggle {
+    cursor: pointer;
+    color: white;
+    padding: 10px;
+}
+
+.nav-list li .MuiIconButton-root {
+    margin-right: 0;
+    transition: transform 0.3s ease;
+}
+
+.sidebar.collapsed li .MuiIconButton-root:hover {
+    transform: scale(1.2); /* Phóng to icon khi hover vào */
+}
+

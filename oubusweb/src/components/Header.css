@@ -1,0 +1,19 @@
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0a0a45; 
+    color: white;
+    padding: 10px 20px;
+    height: 88px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.header-actions .MuiIconButton-root {
+    color: white;  /* Màu cho các icon */
+}
